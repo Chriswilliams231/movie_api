@@ -1,0 +1,27 @@
+URL: /
+Timestamp: Sun Oct 25 2020 15:19:05 GMT-0700 (Pacific Daylight Time)
+
+URL: /css/styles.css
+Timestamp: Sun Oct 25 2020 15:19:05 GMT-0700 (Pacific Daylight Time)
+
+URL: /
+Timestamp: Sun Oct 25 2020 15:19:31 GMT-0700 (Pacific Daylight Time)
+
+URL: /css/styles.css
+Timestamp: Sun Oct 25 2020 15:19:31 GMT-0700 (Pacific Daylight Time)
+
+URL: /
+Timestamp: Sun Oct 25 2020 15:19:39 GMT-0700 (Pacific Daylight Time)
+
+URL: /css/styles.css
+Timestamp: Sun Oct 25 2020 15:19:39 GMT-0700 (Pacific Daylight Time)
+
+URL: /documentation
+Timestamp: Sun Oct 25 2020 15:19:51 GMT-0700 (Pacific Daylight Time)
+
+URL: /css/styles.css
+Timestamp: Sun Oct 25 2020 15:19:51 GMT-0700 (Pacific Daylight Time)
+
+URL: /favicon.ico
+Timestamp: Sun Oct 25 2020 15:19:51 GMT-0700 (Pacific Daylight Time)
+
