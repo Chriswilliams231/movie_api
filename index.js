@@ -1,7 +1,9 @@
 // Imports express into your package 
 const express = require('express'),
     morgan = require('morgan');
+
 const app = express()
+
 const bodyParser = require('body-parser'),
     methodOverride = require('method-override');
 
@@ -18,27 +20,7 @@ app.use((err, req, res, next) => {
 });
 app.use(express.static('public'));
 app.use(morgan('common'));
-// let myLogger = (req, res, next) => {
-//     console.log(req.url);
-//     next();
-// };
 
-// app.use(myLogger);
-
-let topBooks = [
-    {
-        title: 'Harry Potter and the Sorcerer\'s Stone',
-        author: 'J.K. Rowling'
-    },
-    {
-        title: 'Lord of the Rings',
-        author: 'J.R.R. Tolkien'
-    },
-    {
-        title: 'Twilight',
-        author: 'Stephanie Meyer'
-    }
-];
 
 let movies = [
     {
@@ -129,23 +111,147 @@ let movies = [
             "https://m.media-amazon.com/images/M/MV5BMjIyZGU4YzUtNDkzYi00ZDRhLTljYzctYTMxMDQ4M2E0Y2YxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX667_CR0,0,667,999_AL_.jpg",
         Featured: true,
     },
+    {
+        id: 5,
+        Title: "Do the Right Thing",
+        Description:
+            "On the hottest day of the year on a street in the Bedford-Stuyvesant section of Brooklyn, everyone's hate and bigotry smolders and builds until it explodes into violence.",
+        Genre: {
+            Name: "Comedy Drama",
+            Description:
+                "An all-encompassing genre hybrid that merges dramatic film with comic elements or a strong comic lead, in situations that do not necessarily end happily. Instead of presenting the world as neat and clean and full of only laughs and resolution, these films often add dramatic touches like tragedy, melodrama and melancholy while maintaining a light tone.",
+        },
+        Director: {
+            Name: "Spike Lee",
+            Bio:
+                "Spike Lee was born Shelton Jackson Lee on March 20, 1957, in Atlanta, Georgia. At a very young age, he moved from pre-civil rights Georgia, to Brooklyn, New York.",
+            Birth: "1957",
+            Death: "",
+        },
+
+        ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BODA2MjU1NTI1MV5BMl5BanBnXkFtZTgwOTU4ODIwMjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+    },
+    {
+        id: 6,
+        Title: "The Color Purple",
+        Description:
+            "A black Southern woman struggles to find her identity after suffering abuse from her father and others over four decades.",
+        Genre: {
+            Name: "Drama",
+            Description:
+                "In film and television, drama is a genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. ... These terms tend to indicate a particular setting or subject-matter, or else they qualify the otherwise serious tone of a drama with elements that encourage a broader range of moods.",
+        },
+        Director: {
+            Name: "Steven Spielberg",
+            Bio:
+                "One of the most influential personalities in the history of cinema, Steven Spielberg is Hollywood's best known director and one of the wealthiest filmmakers in the world.",
+            Birth: "1946",
+            Death: "",
+        },
+
+        ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BZDRkOWQ5NGUtYTVmOS00ZjNhLWEwODgtOGI2MmUxNTBkMjU0XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+    },
+    {
+        id: 7,
+        Title: "Ready Player One",
+        Description:
+            "When the creator of a virtual reality called the OASIS dies, he makes a posthumous challenge to all OASIS users to find his Easter Egg, which will give the finder his fortune and control of his world.",
+        Genre: {
+            Name: "Adventure",
+            Description:
+                "Adventure. Adventure film is a genre that revolves around the conquests and explorations of a protagonist. The purpose of the conquest can be to retrieve a person or treasure, but often the main focus is simply the pursuit of the unknown. These films generally take place in exotic locations and play on historical myths.",
+        },
+        Director: {
+            Name: "Steven Spielberg",
+            Bio:
+                "One of the most influential personalities in the history of cinema, Steven Spielberg is Hollywood's best known director and one of the wealthiest filmmakers in the world.",
+            Birth: "1946",
+            Death: "",
+        },
+
+        ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+    },
+    {
+        id: 8,
+        Title: "Black Panther",
+        Description:
+            "T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country's past.",
+        Genre: {
+            Name: "Action",
+            Description:
+                "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases. Common action scenes in films are generally, but not limited to, explosions, car chases, fistfights and shootouts.",
+        },
+        Director: {
+            Name: "Ryan Coogler",
+            Bio:
+                "Ryan Coogler was born on May 23, 1986 in Oakland, California, USA as Ryan Kyle Coogler. He is a director and writer, known for Black Panther (2018), Creed (2015) and Fruitvale Station (2013)",
+            Birth: "1986",
+            Death: "",
+        },
+
+        ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+    },
+    {
+        id: 9,
+        Title: "Inception",
+        Description:
+            "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        Genre: {
+            Name: "Action",
+            Description:
+                "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases. Common action scenes in films are generally, but not limited to, explosions, car chases, fistfights and shootouts.",
+        },
+        Director: {
+            Name: "Christopher Nolan",
+            Bio:
+                "Best known for his cerebral, often nonlinear, storytelling, acclaimed writer-director Christopher Nolan was born on July 30, 1970, in London, England.",
+            Birth: "1970",
+            Death: "",
+        },
+
+        ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+    },
+    {
+        id: 10,
+        Title: "Harlem Nights",
+        Description:
+            "During the 1930s, a New York City illegal gambling house owner and his associates must deal with strong competition, gangsters, and corrupt cops in order to stay in business.",
+        Genre: {
+            Name: "Comedy Drama",
+            Description:
+                "An all-encompassing genre hybrid that merges dramatic film with comic elements or a strong comic lead, in situations that do not necessarily end happily. Instead of presenting the world as neat and clean and full of only laughs and resolution, these films often add dramatic touches like tragedy, melodrama and melancholy while maintaining a light tone.",
+        },
+        Director: {
+            Name: "Eddie Murphy",
+            Bio:
+                "Edward Regan Murphy was born April 3, 1961 in Brooklyn, New York, to Lillian Lynch (born: Lillian Laney), a telephone operator, and Charles Edward Murphy, a transit police officer who was also an amateur comedian and actor.",
+            Birth: "1961",
+            Death: "",
+        },
+
+        ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BODlmNjc1MjYtMjBhOC00ZGFjLTkwMWUtYWNhMDAyYmJlNWEwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        Featured: true,
+    },
 ];
 
 // GET requests
 app.get('/', (req, res) => {
-    res.send('Welcome to my book club!');
+    res.send('Welcome to myFlix!');
 });
 
 app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
-});
-
-app.get('/books', (req, res) => {
-    res.json(topBooks);
-});
-
-app.get('/index', (req, res) => {
-    res.sendFile('public/index.html', { root: __dirname });
 });
 
 app.get('/movies', (req, res) => {
