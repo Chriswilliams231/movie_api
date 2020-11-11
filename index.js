@@ -14,13 +14,37 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
-});
+
 app.use(express.static('public'));
+// Morgan middleware will log all request
 app.use(morgan('common'));
 
+let users = [
+    {
+        id: 1,
+        Username: "Hannah Keating",
+        Password: "1234",
+        Email: "h.monet1104@gmail.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+    {
+        id: 2,
+        Username: "Natasha Keating",
+        Password: "5678",
+        Email: "h.monet1104@yahoo.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+    {
+        id: 3,
+        Username: "Sean Keating",
+        Password: "5555",
+        Email: "seank@gmail.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+];
 
 let movies = [
     {
@@ -249,15 +273,63 @@ let movies = [
 app.get('/', (req, res) => {
     res.send('Welcome to myFlix!');
 });
+app.get('/movies', (req, res) => {
+    res.json(movies);
+});
+app.get('/movies/:Title', (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.Title === req.params.Title;
+        })
+    );
+});
+app.get('/movies/genres/:Name', (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.Genre.Name === req.params.Name;
+        })
+    );
+});
+app.get('/movies/director/:Name', (req, res) => {
+    res.json(
+        movies.find((movie) => {
+            return movie.Director.Name === req.params.Name;
+        })
+    );
+});
+
+// Adding Users
+app.post('/users', (req, res) => {
+    res.status(201).send('User is now add!');
+});
+//Upadating User information
+app.put('/users/:Username', (req, res) => {
+    res.json(
+        users.find((user) => {
+            return user.Username === req.params.Username;
+        })
+    );
+});
+//Allowing users to add movie to favorites
+app.post('users/:Username/favorites', (req, res) => {
+    res.status(201).send('Successfully add movie to favorites!');
+});
+//Deleting a movie from favorites
+app.delete('/users/:Username/favorites', (req, res) => {
+    res.status(201).send('Successfully removed movie from favorites');
+});
+app.delete('/users/:Email', (req, res) => {
+    res.status(201).send('User is now Deleted!')
+})
 
 app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
 });
-
-app.get('/movies', (req, res) => {
-    res.json(movies);
+// error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
-
 
 // listen for requests
 app.listen(8080, () => {
