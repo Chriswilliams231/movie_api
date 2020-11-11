@@ -21,5 +21,129 @@
         movies.
       </p>
     </div>
+    <div>
+      <table>
+        <tr>
+          <th>Business Logic</th>
+          <th>URL Endpoints</th>
+          <th>HTTP Method</th>
+          <th>Request body data format</th>
+          <th>Response body data format</th>
+        </tr>
+        <tr>
+          <td>Get a list of all the movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>JSON</td>
+          <td>
+            { <br />id: 10,<br />
+            Title : "Harlem Nights",<br />
+            Description: "During the 1930s, a New York City illegal gambling
+            house owner and his associates must deal with strong competition,
+            gangsters, and corrupt cops in order to stay in business.",<br />
+            <br />Genre : { <br />Name : "Comedy | Drama", <br />Description :
+            "An all-encompassing genre hybrid that merges dramatic film with
+            comic elements or a strong comic lead, in situations that do not
+            necessarily end happily. Instead of presenting the world as neat and
+            clean and full of only laughs and resolution, these films often add
+            dramatic touches like tragedy, melodrama and melancholy while
+            maintaining a light tone.",<br />
+            },<br />
+            Director : { <br />Name : "Eddie Murphy", Bio: "Edward Regan Murphy
+            was born April 3, 1961 in Brooklyn, New York, to Lillian Lynch
+            (born: Lillian Laney), a telephone operator, and Charles Edward
+            Murphy, a transit police officer who was also an amateur comedian
+            and actor.", Birth: "1961", Death: "", <br />}, <br />ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BODlmNjc1MjYtMjBhOC00ZGFjLTkwMWUtYWNhMDAyYmJlNWEwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            Featured: true, <br />},
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Get information about a specific movie using the Title and adding
+            "%20" for spaces in between the title
+          </td>
+          <td>/movies/:Title</td>
+          <td>GET</td>
+          <td>JSON</td>
+          <td>
+            { <br />id: 10,<br />
+            Title : "Harlem Nights",<br />
+            Description: "During the 1930s, a New York City illegal gambling
+            house owner and his associates must deal with strong competition,
+            gangsters, and corrupt cops in order to stay in business.",<br />
+            <br />Genre : { <br />Name : "Comedy | Drama", <br />Description :
+            "An all-encompassing genre hybrid that merges dramatic film with
+            comic elements or a strong comic lead, in situations that do not
+            necessarily end happily. Instead of presenting the world as neat and
+            clean and full of only laughs and resolution, these films often add
+            dramatic touches like tragedy, melodrama and melancholy while
+            maintaining a light tone.",<br />
+            },<br />
+            Director : { <br />Name : "Eddie Murphy", Bio: "Edward Regan Murphy
+            was born April 3, 1961 in Brooklyn, New York, to Lillian Lynch
+            (born: Lillian Laney), a telephone operator, and Charles Edward
+            Murphy, a transit police officer who was also an amateur comedian
+            and actor.", Birth: "1961", Death: "", <br />}, <br />ImagePath:
+            "https://m.media-amazon.com/images/M/MV5BODlmNjc1MjYtMjBhOC00ZGFjLTkwMWUtYWNhMDAyYmJlNWEwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            Featured: true, <br />},
+          </td>
+        </tr>
+        <tr>
+          <td>Getting Genre information when typing a name</td>
+          <td>/movies/genres/:Name</td>
+          <td>GET</td>
+          <td>JSON</td>
+          <td>
+            Genre : {<br />
+            Name: "Comedy Drama",
+            <br />Description: "An all-encompassing genre hybrid that merges
+            dramatic film with comic elements or a strong comic lead, in
+            situations that do not necessarily end happily. Instead of
+            presenting the world as neat and clean and full of only laughs and
+            resolution, these films often add dramatic touches like tragedy,
+            melodrama and melancholy while maintaining a light tone.", <br />},
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Retrieving information about the director using their name. still
+            using "%20" for spacing
+          </td>
+          <td>/movies/director/:Name</td>
+          <td>GET</td>
+          <td>JSON</td>
+          <td>
+            Director: {<br />
+            Name: "Eddie Murphy",
+            <br />Bio: "Edward Regan Murphy was born April 3, 1961 in Brooklyn,
+            New York, to Lillian Lynch (born: Lillian Laney), a telephone
+            operator, and Charles Edward Murphy, a transit police officer who
+            was also an amateur comedian and actor.", <br />Birth: "1961",
+            <br />Death: "", },
+          </td>
+        </tr>
+        <tr>
+          <td>Adding new users to myFlix</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>
+            JSON <br />
+            {<br />
+            id: 3, <br />Username: "Sean Keating", <br />Password: "5555",
+            <br />Email: "seank@gmail.com", <br />Birthday: "11/04/1990",
+            <br />FavoriteMovies: [], <br />},
+          </td>
+          <td>User is now added</td>
+        </tr>
+        <tr>
+          <td>Deleting a user using their Email</td>
+          <td>/users/:Email</td>
+          <td>DELETE</td>
+          <td>none</td>
+          <td>User is now Deleted</td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>

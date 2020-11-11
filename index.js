@@ -26,7 +26,7 @@ let users = [
         Password: "1234",
         Email: "h.monet1104@gmail.com",
         Birthday: "11/04/1990",
-        FavoriteMovies: [],
+        FavoritesMovies: [],
     },
     {
         id: 2,
