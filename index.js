@@ -310,15 +310,16 @@ app.put('/users/:Username', (req, res) => {
         })
     );
 });
+
 //Allowing users to add movie to favorites
-app.post('users/:Username/favorites', (req, res) => {
+app.put('/users/:userid/movies/:movieid', (req, res) => {
     res.status(201).send('Successfully add movie to favorites!');
 });
 //Deleting a movie from favorites
-app.delete('/users/:Username/favorites', (req, res) => {
+app.delete('/users/:userid/movies/:movieid', (req, res) => {
     res.status(201).send('Successfully removed movie from favorites');
 });
-app.delete('/users/:Email', (req, res) => {
+app.delete('/users/:Username', (req, res) => {
     res.status(201).send('User is now Deleted!')
 })
 
