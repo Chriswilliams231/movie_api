@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5fb6c6440c4eb069621e7d35"},"Username":"Natasha Smith","Password":"12abc","Email":"Nat.smith@gmail.com","Birthday":"1986-12-10","FavoriteMovies":[{"$oid":"5fb591e9940ece18a2dcae04"}]}
+{"_id":{"$oid":"5fb6c8620c4eb069621e7d37"},"Username":"Angelica Williams","Password":"789dgk","Email":"gel.will23@gmail.com","Birthday":"1992-11-25","FavoriteMovies":[{"$oid":"5fb5c9a2940ece18a2dcae07"}]}
+{"_id":{"$oid":"5fb6c9480c4eb069621e7d38"},"Username":"Scott Smith","Password":"scott0710","Email":"scott.smith@gmail.com","Birthday":"1986-07-10","FavoriteMovies":[{"$oid":"5fb5e94f0c4eb069621e7d33"}]}
+{"_id":{"$oid":"5fb6caa50c4eb069621e7d39"},"Username":"Hannah Keating","Password":"1234","Email":"h.monet1104@yahoo.com","Birthday":"1990-11-04","FavoriteMovies":[{"$oid":"5fb5e47d0c4eb069621e7d31"}]}
