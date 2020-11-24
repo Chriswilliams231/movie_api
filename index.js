@@ -47,13 +47,6 @@ app.get(
             });
     }
 );
-// app.get('/movies/:Title', (req, res) => {
-//     res.json(
-//         movies.find((movie) => {
-//             return movie.Title === req.params.Title;
-//         })
-//     );
-// });
 //GET JSON movie info when looking for specific title
 app.get("/movies/:Title", (req, res) => {
     Movies.findOne({ Title: req.params.Title })
@@ -65,13 +58,7 @@ app.get("/movies/:Title", (req, res) => {
             res.status(500).send("Error: " + err);
         });
 });
-// app.get('/movies/genres/:Name', (req, res) => {
-//     res.json(
-//         movies.find((movie) => {
-//             return movie.Genre.Name === req.params.Name;
-//         })
-//     );
-// });
+
 //get data about genre by name
 app.get("/movies/genre/:Name", function (req, res) {
     Movies.findOne({ "Genre.Name": req.params.Name })
@@ -83,13 +70,7 @@ app.get("/movies/genre/:Name", function (req, res) {
             res.status(500).send("Error: " + err);
         });
 });
-// app.get('/movies/director/:Name', (req, res) => {
-//     res.json(
-//         movies.find((movie) => {
-//             return movie.Director.Name === req.params.Name;
-//         })
-//     );
-// });
+
 //get data about director
 app.get("/movies/director/:Name", function (req, res) {
     Movies.findOne({ "Director.Name": req.params.Name })
@@ -102,10 +83,6 @@ app.get("/movies/director/:Name", function (req, res) {
         });
 });
 
-// Adding Users
-// app.post('/users', (req, res) => {
-//     res.status(201).send('User is now add!');
-// });
 //get list of users
 app.get("/users", function (
     req,
@@ -134,6 +111,15 @@ app.get(
             });
     }
 );
+//Add user
+/* We’ll expect JSON in this format
+{
+  ID: Integer,
+  Username: String,
+  Password: String,
+  Email: String,
+  Birthday: Date
+}*/
 app.post(
     "/users",
     (req, res) => {
@@ -163,14 +149,17 @@ app.post(
             });
     }
 );
-//Upadating User information
-// app.put('/users/:Username', (req, res) => {
-//     res.json(
-//         users.find((user) => {
-//             return user.Username === req.params.Username;
-//         })
-//     );
-// });
+//Upadating User information by Username
+/* We’ll expect JSON in this format
+{
+  Username: String,
+  (required)
+  Password: String,
+  (required)
+  Email: String,
+  (required)
+  Birthday: Date
+}*/
 app.put(
     "/users/:Username",
     function (req, res) {
@@ -198,17 +187,6 @@ app.put(
 );
 
 //Allowing users to add movie to favorites
-// app.put('/users/:userid/movies/:movieid', (req, res) => {
-//     res.status(201).send('Successfully add movie to favorites!');
-// });
-//Deleting a movie from favorites
-// app.delete('/users/:userid/movies/:movieid', (req, res) => {
-//     res.status(201).send('Successfully removed movie from favorites');
-// });
-// app.delete('/users/:Username', (req, res) => {
-//     res.status(201).send('User is now Deleted!')
-// })
-// Add movie to favorites list
 app.post(
     "/users/:Username/movies/:MovieID",
     function (req, res) {
@@ -249,6 +227,7 @@ app.delete(
         );
     }
 );
+// Delete by Username
 app.delete(
     "/users/:Username",
     function (req, res) {

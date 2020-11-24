@@ -36,7 +36,7 @@
           <td>GET</td>
           <td>JSON</td>
           <td>
-            { <br />id: 10,<br />
+            { <br />id: "5fb591e9940ece18a2dcae04",<br />
             Title : "Harlem Nights",<br />
             Description: "During the 1930s, a New York City illegal gambling
             house owner and his associates must deal with strong competition,
@@ -67,7 +67,7 @@
           <td>GET</td>
           <td>JSON</td>
           <td>
-            { <br />id: 10,<br />
+            { <br />id:"5fb5e94f0c4eb069621e7d33" ,<br />
             Title : "Harlem Nights",<br />
             Description: "During the 1930s, a New York City illegal gambling
             house owner and his associates must deal with strong competition,
@@ -91,7 +91,7 @@
         </tr>
         <tr>
           <td>Getting Genre information when typing a name</td>
-          <td>/movies/genres/:Name</td>
+          <td>/movies/genre/:Name</td>
           <td>GET</td>
           <td>JSON</td>
           <td>
@@ -137,8 +137,43 @@
           <td>User is now added</td>
         </tr>
         <tr>
-          <td>Deleting a user using their Email</td>
-          <td>/users/:Email</td>
+          <td>Adding your Favorite movie into the user profile</td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td>POST</td>
+          <td>JSON</td>
+          <td>"FavoriteMovies": [ "5fb591e9940ece18a2dcae04" ]</td>
+        </tr>
+        <tr>
+          <td>Updating User information by their Username</td>
+          <td>/users/:Username</td>
+          <td>PUT</td>
+          <td>
+            JSON <br />
+            {<br />
+            <br />"Username": "Chris Smith", <br />
+            "Password": "1728Update", <br />"Email": "something@gmail.com",
+            <br />"Birthday": "11/05/1991" <br />}
+          </td>
+          <td>
+            {<br />
+            <br />"Username": "Chris Smith", <br />
+            "Password": "1728Update", <br />"Email": "something@gmail.com",
+            <br />"Birthday": "11/05/1991" <br />}
+          </td>
+        </tr>
+        <tr>
+          <td>Deleting your favorite movies by the Movie ID</td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td>DELETE</td>
+          <td>
+            JSON<br />
+            "FavoriteMovies": [ "5fb591e9940ece18a2dcae04" ]
+          </td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Deleting a user using their Username</td>
+          <td>/users/:Username</td>
           <td>DELETE</td>
           <td>none</td>
           <td>User is now Deleted</td>
