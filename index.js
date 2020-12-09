@@ -37,7 +37,7 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 const cors = require('cors');
 //Grants specified domain access to your app
-let allowedOrigins = ['http://localhost:8080'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
 });
 //return JSON object when at /movies
 app.get(
-    "/movies", passport.authenticate('jwt', { session: false }),
+    "/movies",
     (req, res) => {
         Movies.find()
             .then((movies) => {
