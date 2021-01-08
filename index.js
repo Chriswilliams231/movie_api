@@ -37,7 +37,7 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 const cors = require('cors');
 //Grants specified domain access to your app
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflix89.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
 // let allowedOrigins = ['*'];
 
 app.use(cors({
@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
 });
 //return JSON object when at /movies
 app.get(
-    "/movies",
+    "/movies", passport.authenticate('jwt', { session: false }),
     (req, res) => {
         Movies.find()
             .then((movies) => {
