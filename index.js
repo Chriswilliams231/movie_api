@@ -53,11 +53,20 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 const { check, validationResult } = require('express-validator');
 
-// GET requests
+/**
+ * @desc GET requests
+ * @access Private
+ */
+
 app.get('/', (req, res) => {
     res.send('Welcome to myFlix!');
 });
-//return JSON object when at /movies
+
+/**
+ * @desc return JSON object when at /movies
+ * @access Private
+ */
+
 app.get(
     "/movies", passport.authenticate('jwt', { session: false }),
     (req, res) => {
@@ -71,7 +80,11 @@ app.get(
             });
     }
 );
-//GET JSON movie info when looking for specific title
+
+/**
+ * @access Private
+ * @desc GET JSON movie info when looking for specific title
+ */
 app.get("/movies/:Title", passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
@@ -83,7 +96,10 @@ app.get("/movies/:Title", passport.authenticate('jwt', { session: false }), (req
         });
 });
 
-//get data about genre by name
+/**
+ * @desc get data about genre by name
+ * @access Private
+ */
 app.get("/movies/genre/:Name", passport.authenticate('jwt', { session: false }), function (req, res) {
     Movies.findOne({ "Genre.Name": req.params.Name })
         .then(function (movies) {
@@ -95,7 +111,10 @@ app.get("/movies/genre/:Name", passport.authenticate('jwt', { session: false }),
         });
 });
 
-//get data about director
+/**
+ * @desc Gets data about director
+ * @access Private
+ */
 app.get("/movies/director/:Name", passport.authenticate('jwt', { session: false }), function (req, res) {
     Movies.findOne({ "Director.Name": req.params.Name })
         .then(function (movies) {
@@ -107,7 +126,10 @@ app.get("/movies/director/:Name", passport.authenticate('jwt', { session: false 
         });
 });
 
-//get list of users
+/**
+ * @desc Gets all User information
+ * @access Private
+ */
 app.get("/users", passport.authenticate('jwt', { session: false }), function (
     req,
     res
@@ -121,7 +143,11 @@ app.get("/users", passport.authenticate('jwt', { session: false }), function (
             res.status(500).send("Error: " + err);
         });
 });
-//get a user by username
+
+/**
+ * @desc Gets user info by Username
+ * @access Private
+ */
 app.get(
     "/users/:Username", passport.authenticate('jwt', { session: false }),
     function (req, res) {
@@ -144,6 +170,10 @@ app.get(
   Email: String,
   Birthday: Date
 }*/
+/**
+ * @desc Lets Register a new User
+ * @access Public
+ */
 app.post(
     "/users", [
     check('Username', 'Username is required').isLength({ min: 5 }),
@@ -186,7 +216,7 @@ app.post(
         });
 });
 
-//Upadating User information by Username
+
 /* We’ll expect JSON in this format
 {
   Username: String,
@@ -197,6 +227,10 @@ app.post(
   (required)
   Birthday: Date
 }*/
+/**
+ * @desc Updates user information by Username
+ * @access Private
+ */
 app.put(
     "/users/:Username", [
     check('Username', 'Username is required').isLength({ min: 5 }),
@@ -236,7 +270,10 @@ app.put(
         });
 });
 
-//Allowing users to add movie to favorites
+/**
+ * @desc Allows users to add movie to favorites
+ * @access Private
+ */
 app.post(
     "/users/:Username/movies/:MovieID", passport.authenticate('jwt', { session: false }),
     function (req, res) {
@@ -258,7 +295,10 @@ app.post(
     }
 );
 
-// delete movie from favorite list for user
+/**
+ * @desc Deletes movie from favorite list for user
+ * @access Private
+ */
 app.delete(
     "/users/:Username/movies/:MovieID", passport.authenticate('jwt', { session: false }),
     function (req, res) {
@@ -277,7 +317,10 @@ app.delete(
         );
     }
 );
-// Delete by Username
+/**
+ * @desc Deletes User's account by Username
+ * @access Private
+ */
 app.delete(
     "/users/:Username", passport.authenticate('jwt', { session: false }),
     function (req, res) {
