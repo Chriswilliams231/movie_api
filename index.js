@@ -37,8 +37,8 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 
 const cors = require('cors');
 //Grants specified domain access to your app
-// let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
-let allowedOrigins = ['*'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
+// let allowedOrigins = ['*'];
 
 app.use(cors({
     origin: (origin, callback) => {
