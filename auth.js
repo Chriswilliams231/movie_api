@@ -1,3 +1,12 @@
+const express = require('express'),
+    morgan = require('morgan');
+
+const app = express()
+
+const cors = require('cors');
+
+app.use(cors());
+
 const jwtSecret = 'your_jwt_secret'; // This is the same key used in the JWTStrategy
 
 const jwt = require('jsonwebtoken'),
